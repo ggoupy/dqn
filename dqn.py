@@ -218,6 +218,8 @@ class DQNAgent():
         transforms = nn.Sequential(
             T.transforms.Grayscale(num_output_channels=1),
             T.transforms.Resize(self.state_space),
+            # WARNING : Might not be the good way to do it 
+            # Consider using T.ToTensor(), T.ToPILImage() and then compute mean/std
             T.transforms.Normalize((0.5,), (0.5,))
         )
         # Apply transformations
